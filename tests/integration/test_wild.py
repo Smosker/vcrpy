@@ -96,10 +96,10 @@ def rpc_server():
 def test_xmlrpclib(tmpdir, rpc_server):
     with vcr.use_cassette(str(tmpdir.join('xmlrpcvideo.yaml'))):
         roundup_server = xmlrpc_client.ServerProxy(rpc_server, allow_none=True)
-        original_schema = roundup_server.pow(2,4)
+        original_schema = roundup_server.pow(2, 4)
 
     with vcr.use_cassette(str(tmpdir.join('xmlrpcvideo.yaml'))):
         roundup_server = xmlrpc_client.ServerProxy(rpc_server, allow_none=True)
-        second_schema = roundup_server.pow(2,4)
+        second_schema = roundup_server.pow(2, 4)
 
     assert original_schema == second_schema
